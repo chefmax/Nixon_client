@@ -18,8 +18,8 @@ class Tcp_target(object):
 		self._port = port
 		Tcp_target.sock.connect((host, port))
 		Tcp_target.sock.send('$QStartNoAckMode#b0')
-		print Tcp_target.sock.recv(1024)
-		print Tcp_target.sock.recv(1024)
+		Tcp_target.sock.recv(1024)
+		Tcp_target.sock.recv(1024)
 
 	def __del__(self):
 		Tcp_target.sock.close

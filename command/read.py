@@ -9,4 +9,5 @@ class Read(Generic_command):
 		super(Read, self).__init__(command)
 
 	def _print_result(self, s):
-		print int(s.recv(1024)[1:-3], 16) #>> ((4 - int(self._command[-1])) << 3)
+	#	print int(s.recv(1024)[1:-3], 16) #>> ((4 - int(self._command[-1])) << 3)
+		print s.recv(1024) >> ((4 - int(self._command[-1])) << 3)

@@ -31,5 +31,8 @@ class Tcp_target(object):
 	def ntohl(cls, content):
 		return socket.ntohl(content)
 
-	def recv(self, number):
+	def recv_value(self, number):
 		return Tcp_target.ntohl(int(Tcp_target.sock.recv(number)[1:-3], 16))
+
+	def recv(self, number):
+		return Tcp_target.sock.recv(number)

@@ -11,6 +11,7 @@ class Generic_command(object):
 		return cls.obj
 
 	def __init__(self, command):
+		self._type = command[0]
 		self._command = command
 
 	def _get_checksum(self):
@@ -28,11 +29,12 @@ class Generic_command(object):
 		return addr
 
 	def _generate_result(self):
-		return self._type + self._get_addr() + self._command[-2:]  + '#' + self._get_checksum()
+		return "ERROR"
 
-	def _print_result(self, s):
-		print s.recv(1024)
+	def _print_result(self, target):
+		print target.recv(1024)
 
-	def execute(self, s):
-		s.send(self._generate_result())
-		self._print_result(s)
+	def execute(self, target):
+		target.send(self._generate_result())
+		self._print_result(target)
+#		print self._generate_result()

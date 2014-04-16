@@ -8,6 +8,8 @@ def get_command(command):
 		return read.Read(command)
 	elif (command[0] == "w"):
 		return write.Write(command)
+	elif ((command[0] == 'Z') or (command[0] == 'z')):
+		return breakpoint.Breakpoint(command)
 	else:
 		return None
 

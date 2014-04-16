@@ -32,7 +32,7 @@ class Generic_command(object):
 		return "ERROR"
 
 	def _print_result(self, target):
-		print target.recv(1024)
+		print target.recv(1024)[1:-3]
 
 	def execute(self, target):
 		target.send(self._generate_result())

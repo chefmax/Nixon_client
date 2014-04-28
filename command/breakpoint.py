@@ -3,7 +3,7 @@
 from generic_command import *
 
 
-class Breakpoint(Generic_command):
+class Breakpoint(GenericCommand):
     @property
     def _get_breakpoint_type(self):
         return self._command[1]
@@ -11,7 +11,7 @@ class Breakpoint(Generic_command):
     @property
     def _get_addr(self):
         addr = re.split(',', self._command)[1]
-        addr = "0" * ( 10 - len(addr) ) + addr[2:]
+        addr = "0" * (10 - len(addr)) + addr[2:]
         return addr
 
     @property

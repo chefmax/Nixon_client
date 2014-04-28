@@ -3,7 +3,7 @@
 import socket
 
 
-class Tcp_target(object):
+class TcpTarget(object):
     sock = socket.socket()
 
     target = None
@@ -16,23 +16,26 @@ class Tcp_target(object):
     def __init__(self, host, port):
         self._host = host
         self._port = port
-        Tcp_target.sock.connect((host, port))
-        Tcp_target.sock.send('$QStartNoAckMode#b0')
-        Tcp_target.sock.recv(1024)
-        Tcp_target.sock.recv(1024)
+        TcpTarget.sock.connect((host, port))
+        TcpTarget.sock.send('$QStartNoAckMode#b0')
+        TcpTarget.sock.recv(1024)
+        TcpTarget.sock.recv(1024)
 
     def __del__(self):
-        Tcp_target.sock.close
+        TcpTarget.sock.close
 
-    def send(self, content):
-        Tcp_target.sock.send(content)
+    @staticmethod
+    def send(content):
+        TcpTarget.sock.send(content)
 
-    @classmethod
-    def ntohl(cls, content):
+    @staticmethod
+    def ntohl(content):
         return socket.ntohl(content)
 
-    def recv_value(self, number):
-        return Tcp_target.ntohl(int(Tcp_target.sock.recv(number)[1:-3], 16))
+    @staticmethod
+    def recv_value(number):
+        return TcpTarget.ntohl(int(TcpTarget.sock.recv(number)[1:-3], 16))
 
-    def recv(self, number):
-        return Tcp_target.sock.recv(number)
+    @staticmethod
+    def recv(number):
+        return TcpTarget.sock.recv(number)

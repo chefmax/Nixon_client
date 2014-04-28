@@ -1,10 +1,9 @@
-#!/usr/bin/python
+# !/usr/bin/python
 
 from generic_command import *
-import socket
 
-class Read(Generic_command):
 
+class Read(GenericCommand):
     @property
     def _generate_result(self):
         self._command = self._type + self._get_addr + self._command[-2:]

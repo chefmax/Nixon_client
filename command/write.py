@@ -1,13 +1,13 @@
-#!/usr/bin/python
+# !/usr/bin/python
 
 from generic_command import *
 
-class Write(Generic_command):
 
+class Write(GenericCommand):
     @property
     def _get_value(self):
         val = re.split(',', self._command)[1]
-        if (len(val) == 1):
+        if 1 == len(val):
             val = '0' + val
         return val
 

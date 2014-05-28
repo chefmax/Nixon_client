@@ -7,7 +7,7 @@ from target import *
 def get_command(command):
     if "m" == command[0]:
         return read.Read(command)
-    elif command[0] == "w":
+    elif command[0] == "M":
         return write.Write(command)
     elif (command[0] == 'Z') or (command[0] == 'z'):
         return breakpoint.Breakpoint(command)

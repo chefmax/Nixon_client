@@ -40,5 +40,3 @@ class GenericCommand(object):
     def execute(self, target):
         target.send(self._generate_result)
         self._print_result(target)
-
-# print self._generate_result()

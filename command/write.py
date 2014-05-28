@@ -7,8 +7,7 @@ class Write(GenericCommand):
     @property
     def _get_value(self):
         val = re.split(',', self._command)[1]
-        if 1 == len(val):
-            val = '0' + val
+        val = '0' * (2 * int(self._command[-1:]) - len(val)) + val
         return val
 
     @property

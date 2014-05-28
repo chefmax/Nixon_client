@@ -10,4 +10,4 @@ class Read(GenericCommand):
         return "$" + self._command + '#' + self._get_checksum
 
     def _print_result(self, target):
-        print hex(target.recv_value(1024) >> ((4 - int(self._command[-1])) << 3))
+        print hex(target.recv_value(1024))

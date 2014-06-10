@@ -34,7 +34,7 @@ class TcpTarget(object):
 
     @staticmethod
     def recv_value(number):
-        return int(TcpTarget.sock.recv(number)[1:-3], 16)
+        return TcpTarget.sock.recv(number)[1:-3]
 
     @staticmethod
     def recv(number):

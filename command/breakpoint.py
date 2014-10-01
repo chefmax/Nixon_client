@@ -20,5 +20,12 @@ class Breakpoint(GenericCommand):
 
     @property
     def _generate_result(self):
+        self._wait_result = True
         self._command = self._type + self._get_breakpoint_type + ',' + self._get_addr + ',' + self._get_length
         return "$" + self._command + '#' + self._get_checksum
+
+    def execute(self, target):
+        target.send("$g#67")
+        target.recv(1024)
+        target.send(self._generate_result)
+        self._print_result(target)

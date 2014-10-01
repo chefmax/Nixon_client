@@ -11,13 +11,15 @@ def get_command(command):
         return write.Write(command)
     elif (command[0] == 'Z') or (command[0] == 'z'):
         return breakpoint.Breakpoint(command)
+    elif command[0] == 'c':
+        return generic_command.GenericCommand("$c#63")
     else:
         return None
 
 
 input_command = ""
-input_command = raw_input('Enter command to read or write: ')
 target = tcp_target.TcpTarget("localhost", 1235)
+input_command = raw_input('Enter command to read or write: ')
 
 while input_command != 'exit':
     input_command = "".join(input_command.split())

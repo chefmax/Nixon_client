@@ -13,6 +13,7 @@ class GenericCommand(object):
     def __init__(self, command):
         self._type = command[0]
         self._command = command
+        self._wait_result = False
 
     @property
     def _get_checksum(self):
@@ -32,10 +33,11 @@ class GenericCommand(object):
 
     @property
     def _generate_result(self):
-        return "ERROR"
+        return self._command
 
     def _print_result(self, target):
-        print target.recv(1024)[1:-3]
+        if self._wait_result:
+            print target.recv(1024)[1:-3]
 
     def execute(self, target):
         target.send(self._generate_result)

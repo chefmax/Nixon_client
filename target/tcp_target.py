@@ -20,6 +20,9 @@ class TcpTarget(object):
         TcpTarget.sock.send('$QStartNoAckMode#b0')
         TcpTarget.sock.recv(1024)
         TcpTarget.sock.recv(1024)
+        TcpTarget.sock.send('$P#50')
+        TcpTarget.sock.recv(1024)
+        TcpTarget.sock.send('$c#63')
 
     def __del__(self):
         TcpTarget.sock.close

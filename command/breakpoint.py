@@ -31,7 +31,7 @@ class Breakpoint(GenericCommand):
 
     @property
     def _get_length(self):
-        return str(int(re.split(',', self._command)[2], 16))
+        return '1'
 
     @property
     def _generate_result(self):

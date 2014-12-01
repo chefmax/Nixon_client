@@ -16,17 +16,17 @@ def get_command(command):
     else:
         return None
 
-
-input_command = ""
-target = tcp_target.TcpTarget("localhost", 1235)
-input_command = raw_input('Enter command to read or write: ')
-
-while input_command != 'exit':
-    input_command = "".join(input_command.split())
-    command_obj = get_command(input_command)
-    if command_obj is None:
-        input_command = raw_input('Enter command to read or write: ')
-        continue
-
-    command_obj.execute(target)
+if __name__ == "__main__":
+    input_command = ""
+    target = tcp_target.TcpTarget("localhost", 1235)
     input_command = raw_input('Enter command to read or write: ')
+
+    while input_command != 'exit':
+        input_command = "".join(input_command.split())
+        command_obj = get_command(input_command)
+        if command_obj is None:
+            input_command = raw_input('Enter command to read or write: ')
+            continue
+
+        command_obj.execute(target)
+        input_command = raw_input('Enter command to read or write: ')
